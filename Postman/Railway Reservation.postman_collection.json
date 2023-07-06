@@ -1,0 +1,599 @@
+{
+	"info": {
+		"_postman_id": "84c956c8-afb6-49c2-9b53-a540d2cde584",
+		"name": "Railway Reservation",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Users",
+			"item": [
+				{
+					"name": "Update User",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"first_name\": \"Johniiiiiiiiiiii\",\r\n    \"last_name\": \"kothaalawala\",\r\n    \"gender\": \"Male\",\r\n    \"email\": \"kothalawala@example.com\",\r\n    \"mobile\": \"977472314\",\r\n    \"address\": \"456 Street, City\",\r\n    \"password\": \"password123\",\r\n    \"status\": \"active\"\r\n  }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/users/649bbcf6c9a3090e6868ffe4",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"users",
+								"649bbcf6c9a3090e6868ffe4"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get User By Id",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"first_name\": \"Johniiiiiiiiiiii\",\r\n    \"last_name\": \"kothaalawala\",\r\n    \"gender\": \"Male\",\r\n    \"email\": \"kothalawala@example.com\",\r\n    \"mobile\": \"977472314\",\r\n    \"address\": \"456 Street, City\",\r\n    \"password\": \"password123\",\r\n    \"status\": \"active\"\r\n  }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/users/649bbcf6c9a3090e6868ffe4",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"users",
+								"649bbcf6c9a3090e6868ffe4"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete User",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"first_name\": \"Johniiiiiiiiiiii\",\r\n    \"last_name\": \"kothaalawala\",\r\n    \"gender\": \"Male\",\r\n    \"email\": \"kothalawala@example.com\",\r\n    \"mobile\": \"977472314\",\r\n    \"address\": \"456 Street, City\",\r\n    \"password\": \"password123\",\r\n    \"status\": \"active\"\r\n  }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/users/649bbcf6c9a3090e6868ffe4",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"users",
+								"649bbcf6c9a3090e6868ffe4"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get All Users",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"first_name\": \"Johniiiiiiiiiiii\",\r\n    \"last_name\": \"kothaalawala\",\r\n    \"gender\": \"Male\",\r\n    \"email\": \"kothalawala@example.com\",\r\n    \"mobile\": \"977472314\",\r\n    \"address\": \"456 Street, City\",\r\n    \"password\": \"password123\",\r\n    \"status\": \"active\"\r\n  }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/users",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"users"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Train",
+			"item": [
+				{
+					"name": "Create Train",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Express Train\",\r\n    \"startStation\": \"Station A\",\r\n    \"endStation\": \"Station B\",\r\n    \"startTime\": 85995746,\r\n    \"endTime\": 85995746,\r\n    \"status\": \"active\",\r\n    \"numberOfSeats\": 50,\r\n    \"price\": 10\r\n  }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/trains",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"trains"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Train",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Express Train\",\r\n    \"startStation\": \"Station A\",\r\n    \"endStation\": \"Station B\",\r\n    \"startTime\": 85995746,\r\n    \"endTime\": 85995746,\r\n    \"status\": \"active\",\r\n    \"numberOfSeats\": 50,\r\n    \"price\": 300\r\n  }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/trains/649bc6fa21f6f2afa734b747",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"trains",
+								"649bc6fa21f6f2afa734b747"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Train By Id",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Express Train\",\r\n    \"startStation\": \"Station A\",\r\n    \"endStation\": \"Station B\",\r\n    \"startTime\": 85995746,\r\n    \"endTime\": 85995746,\r\n    \"status\": \"active\",\r\n    \"numberOfSeats\": 50,\r\n    \"price\": 300\r\n  }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/trains/649bc6fa21f6f2afa734b747",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"trains",
+								"649bc6fa21f6f2afa734b747"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get All Train",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Post Night Train\",\r\n    \"startStation\": \"Station A\",\r\n    \"endStation\": \"Station Z\",\r\n    \"startTime\": 85995746,\r\n    \"endTime\": 85995746,\r\n    \"status\": \"active\",\r\n    \"numberOfSeats\": 150,\r\n    \"price\": 500\r\n  }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/trains",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"trains"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete train",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Post Night Train\",\r\n    \"startStation\": \"Station A\",\r\n    \"endStation\": \"Station Z\",\r\n    \"startTime\": 85995746,\r\n    \"endTime\": 85995746,\r\n    \"status\": \"active\",\r\n    \"numberOfSeats\": 150,\r\n    \"price\": 500\r\n  }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/trains/649bcb792a9e0324d94a1a64",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"trains",
+								"649bcb792a9e0324d94a1a64"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Booking",
+			"item": [
+				{
+					"name": "Create Booking",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"date\": \"2023-06-30\",\r\n    \"train\": \"649bc6fa21f6f2afa734b747\",\r\n    \"user\": \"649be0977968deaf21813ce9\",\r\n    \"quantity\": 1,\r\n    \"price\": 300,\r\n    \"status\":\"active\"\r\n  }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/bookings",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"bookings"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Booking By Id",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"date\": \"2023-06-30\",\r\n    \"train\": \"649bc6fa21f6f2afa734b747\",\r\n    \"user\": \"649be0977968deaf21813ce9\",\r\n    \"quantity\": 1,\r\n    \"price\": 300,\r\n    \"status\":\"active\"\r\n  }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/bookings/649bdec77968deaf21813ce6",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"bookings",
+								"649bdec77968deaf21813ce6"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Booking",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"date\": \"2023-06-30\",\r\n    \"train\": \"649bc6fa21f6f2afa734b747\",\r\n    \"user\": \"649be0977968deaf21813ce9\",\r\n    \"quantity\": 3,\r\n    \"price\": 900,\r\n    \"status\":\"active\"\r\n  }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/bookings/649bdec77968deaf21813ce6",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"bookings",
+								"649bdec77968deaf21813ce6"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Booking By Train Id",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"date\": \"2023-06-30\",\r\n    \"train\": \"649bc6fa21f6f2afa734b747\",\r\n    \"user\": \"649be0977968deaf21813ce9\",\r\n    \"quantity\": 3,\r\n    \"price\": 900,\r\n    \"status\":\"active\"\r\n  }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/bookings/train/649bc6fa21f6f2afa734b747",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"bookings",
+								"train",
+								"649bc6fa21f6f2afa734b747"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Booking By Train Id with date query",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"date\": \"2023-06-30\",\r\n    \"train\": \"649bc6fa21f6f2afa734b747\",\r\n    \"user\": \"649be0977968deaf21813ce9\",\r\n    \"quantity\": 3,\r\n    \"price\": 900,\r\n    \"status\":\"active\"\r\n  }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/bookings/train/649bc6fa21f6f2afa734b747?date=2023-06-20",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"bookings",
+								"train",
+								"649bc6fa21f6f2afa734b747"
+							],
+							"query": [
+								{
+									"key": "date",
+									"value": "2023-06-20"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Booking By User Id with date query",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"date\": \"2023-06-30\",\r\n    \"train\": \"649bc6fa21f6f2afa734b747\",\r\n    \"user\": \"649be0977968deaf21813ce9\",\r\n    \"quantity\": 3,\r\n    \"price\": 900,\r\n    \"status\":\"active\"\r\n  }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/bookings/user/649be0977968deaf21813ce9?date=2023-06-20",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"bookings",
+								"user",
+								"649be0977968deaf21813ce9"
+							],
+							"query": [
+								{
+									"key": "date",
+									"value": "2023-06-20"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Auth",
+			"item": [
+				{
+					"name": "Register User",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"first_name\": \"sachith\",\r\n    \"last_name\": \"kothaalawala\",\r\n    \"gender\": \"Male\",\r\n    \"email\": \"sachith@example.com\",\r\n    \"mobile\": \"977472314\",\r\n    \"address\": \"756 Street, City\",\r\n    \"password\": \"password123\",\r\n    \"status\": \"active\"\r\n  }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/auth/user",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"auth",
+								"user"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Login User",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n   \r\n    \"email\": \"sachiths@example.com\",\r\n    \"password\": \"password123\"\r\n  }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/auth",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"auth"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Admin",
+			"item": [
+				{
+					"name": "Create Admin",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"sachith\",\r\n    \"password\": \"password123\",\r\n    \"status\": \"active\"\r\n  }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/admin/create",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"admin",
+								"create"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": " Admin Login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"sachith\",\r\n    \"password\": \"password123\"\r\n  }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/admin",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"admin"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
