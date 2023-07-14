@@ -1,4 +1,6 @@
-const Train = require('../models/train');
+const Train = require("../models/train");
+const booking = require("../models/booking");
+// const booking = require('../models/booking');
 
 // Create a new train
 exports.createTrain = async (req, res) => {
@@ -12,11 +14,41 @@ exports.createTrain = async (req, res) => {
 
 // Read all trains
 exports.getAllTrains = async (req, res) => {
+  const { startStation, endStation, date } = req.query;
+  const query = {};
+
+  if (startStation && endStation) {
+    query.startStation = startStation;
+    query.endStation = endStation;
+  }
+
   try {
-    const trains = await Train.find();
+    let trains = await Train.find(query);
+    for (let i = 0; i < trains.length; i++) {
+      const { _id } = trains[i];
+      const bookings = await booking.find({ train: _id, date });
+      const trainObj = JSON.parse(JSON.stringify(trains[i]));
+
+      //booking sit count
+      const tot = bookings.reduce((total, booking) => {
+        return total + booking.quantity;
+      }, 0);
+
+      //booking status
+      let bookingstatus = {
+        bookingSeats: tot,
+        availableSeats: trains[i].numberOfSeats - tot,
+        numberOfSeats: trains[i].numberOfSeats,
+      };
+      trainObj.bookingStatus = bookingstatus;
+      trains[i] = trainObj;
+
+      console.log("bookings", bookings[i]);
+    }
+
     res.status(200).json(trains);
   } catch (error) {
-    res.status(500).json({ error: 'Failed to retrieve trains' });
+    res.status(500).json({ error: "Failed to retrieve trains" });
   }
 };
 
@@ -25,43 +57,45 @@ exports.getTrainById = async (req, res) => {
   try {
     const train = await Train.findById(req.params.id);
     if (!train) {
-      res.status(404).json({ error: 'Train not found' });
+      res.status(404).json({ error: "Train not found" });
     } else {
       res.status(200).json(train);
     }
   } catch (error) {
-    res.status(500).json({ error: 'Failed to retrieve train' });
+    res.status(500).json({ error: "Failed to retrieve train" });
   }
 };
 
-// Update a train 
+// Update a train
 exports.updateTrainById = async (req, res) => {
   try {
-    const updatedTrain= await Train.findByIdAndUpdate(req.params.id, req.body, {
-      new: true,
-    });
+    const updatedTrain = await Train.findByIdAndUpdate(
+      req.params.id,
+      req.body,
+      {
+        new: true,
+      }
+    );
     if (!updatedTrain) {
-      res.status(404).json({ error: 'Train not found' });
+      res.status(404).json({ error: "Train not found" });
     } else {
       res.status(200).json(updatedTrain);
     }
   } catch (error) {
-    res.status(500).json({ error: 'Failed to update train' });
+    res.status(500).json({ error: "Failed to update train" });
   }
 };
-
-
 
 // Delete a user by ID
 exports.deleteTrainById = async (req, res) => {
   try {
     const deletedTrain = await Train.findByIdAndDelete(req.params.id);
     if (!deletedTrain) {
-      res.status(404).json({ error: 'Train not found' });
+      res.status(404).json({ error: "Train not found" });
     } else {
-      res.status(200).json({ message: 'Train deleted successfully' });
+      res.status(200).json({ message: "Train deleted successfully" });
     }
   } catch (error) {
-    res.status(500).json({ error: 'Failed to delete train' });
+    res.status(500).json({ error: "Failed to delete train" });
   }
 };

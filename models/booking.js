@@ -6,6 +6,7 @@ const bookingSchema = new mongoose.Schema({
   user: { type: mongoose.Schema.Types.ObjectId, ref: 'User', required: true },
   quantity: { type: Number, required: true },
   price: { type: Number, required: true },
+  payment_status: { type: String, enum: ['PAID', 'UNPAID'],},
   status: { type: String, required: true }
 });
 
