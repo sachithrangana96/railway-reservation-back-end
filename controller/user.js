@@ -64,8 +64,11 @@ exports.getAllUsers = async (req, res) => {
 
 // Read a single user by ID
 exports.getUserById = async (req, res) => {
+  
+ let userId = req.userId ? req.user_id : req.params.id
+
   try {
-    const user = await User.findById(req.params.id);
+    const user = await User.findById(userId);
     if (!user) {
       res.status(404).json({ error: 'User not found' });
     } else {
