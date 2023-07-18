@@ -65,10 +65,8 @@ exports.getAllUsers = async (req, res) => {
 // Read a single user by ID
 exports.getUserById = async (req, res) => {
   
- let userId = req.userId ? req.user_id : req.params.id
-
   try {
-    const user = await User.findById(userId);
+    const user = await User.findById(req.params.id);
     if (!user) {
       res.status(404).json({ error: 'User not found' });
     } else {
@@ -78,6 +76,21 @@ exports.getUserById = async (req, res) => {
     res.status(500).json({ error: 'Failed to retrieve user' });
   }
 };
+
+
+exports.getUserByMe = async (req, res) => {
+
+   try {
+     const user = await User.findById(req.userId);
+     if (!user) {
+       res.status(404).json({ error: 'User not found' });
+     } else {
+       res.status(200).json(user);
+     }
+   } catch (error) {
+     res.status(500).json({ error: 'Failed to retrieve user' });
+   }
+ };
 
 // Update a user by ID
 exports.updateUserById = async (req, res) => {
