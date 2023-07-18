@@ -21,6 +21,6 @@ router.delete('/:id', bookingController.deleteBookingById);
 
 // filters
 router.get('/train/:id', bookingController.getBookingByTrainId);
-router.get('/user/:id', bookingController.getBookingByUserId);
+router.get('/user/userID', bookingController.getBookingByUserId);
 
 module.exports = router;
