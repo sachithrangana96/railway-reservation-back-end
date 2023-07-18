@@ -2,10 +2,11 @@ const jwt =require("jsonwebtoken");
 
 
 exports.verifyToken = (req, res, next) => {
-  const token = req.cookies.access_token;
+  const token = req?.cookies?.access_token;
+  console.log(req?.cookies)
   if (!token) {
     // return next(createError(401, "You are not authenticated!"));
-    res.status(404).json({ error: "You are not authenticated!" });
+   return res.status(404).json({ error: "You are not authenticated!" });
   }
 
   jwt.verify(token, process.env.JWT, (err, user) => {

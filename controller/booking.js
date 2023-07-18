@@ -22,6 +22,7 @@ exports.getAllBookings = async (req, res) => {
 
 // Read a single booking by ID
 exports.getBookingById = async (req, res) => {
+
   try {
     const booking = await Booking.findById(req.params.id)
                   .populate('user', 'first_name last_name email') // Populate user fields
@@ -76,7 +77,8 @@ exports.getBookingByTrainId = async (req, res) => {
 
 
 exports.getBookingByUserId = async (req, res) => {
-  const userId = req.params.id;
+  
+  const userId = req.userId;
   const {date} = req.query;
  
 
@@ -101,7 +103,7 @@ exports.getBookingByUserId = async (req, res) => {
   try {
     const bookings = await Booking.find({...query})
       .populate('user', 'first_name last_name email')
-      .populate('train', 'name start_station end_station');
+      .populate('train', 'name startStation endStation startTime endTime');
   
     res.status(200).json(bookings);
   } catch (error) {

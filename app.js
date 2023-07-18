@@ -1,20 +1,22 @@
 const express = require('express');
-// const cros = require('cros');
+const cors = require('cors');
 const morgan = require('morgan');
 const mongoose = require('mongoose');
 const dotenv = require("dotenv");
-
+const {verifyToken} = require('./middlewares/verifyToken')
 
 const userRoutes = require('./routers/user');
 const bookingRoutes = require('./routers/booking');
 const authRoutes = require('./routers/auth');
 const trainRoutes = require('./routers/train');
 const adminRoutes = require('./routers/admin');
+const cookieParser = require('cookie-parser')
 
 const app = express();
-// app.use(cros());
+app.use(cors());
 app.use(express.json());
 app.use(morgan('tiny'));
+app.use(cookieParser());
 dotenv.config();
 
 
@@ -36,13 +38,13 @@ app.use((err,req,res,next)=>{
 app.use('/users', userRoutes);
 
 // Use the booking routes
-app.use('/bookings', bookingRoutes);
+app.use('/bookings',verifyToken, bookingRoutes);
 
 // Use the authentication routes
 app.use('/auth', authRoutes);
 
 // Use the train routes
-app.use('/trains', trainRoutes);
+app.use('/trains',verifyToken, trainRoutes);
 
 // Use the admin routes
 app.use('/admin', adminRoutes);
