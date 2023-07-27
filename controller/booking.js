@@ -2,6 +2,7 @@ const Booking = require('../models/booking');
 
 // Create a new booking
 exports.createBooking = async (req, res) => {
+  req.body.user = req.userId
   try {
     const newBooking = await Booking.create(req.body);
     res.status(201).json(newBooking);
