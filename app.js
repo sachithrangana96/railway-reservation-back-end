@@ -14,10 +14,10 @@ const stationRoutes = require('./routers/station');
 const adminRoutes = require('./routers/admin');
 
 const app = express();
+app.use(cookieParser());
 app.use(cors());
 app.use(express.json());
 app.use(morgan('tiny'));
-app.use(cookieParser);
 dotenv.config();
 
 
