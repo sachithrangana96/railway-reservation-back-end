@@ -21,8 +21,14 @@ exports.createUser = async (req, res) => {
       status:req.body.status
      })
 
-     await newUser.save()
-    res.status(201).json(newUser);
+     const user = await newUser.save()
+     const { password, ...otherDetails } = user._doc;;
+    
+     const token = jwt.sign({id:user._id},process.env.JWT)
+     res.cookie("access_token",token,{
+      httpOnly:true,
+     }).status(200).json(otherDetails);
+
   } catch (error) {
     res.status(500).json({ error: error });
   }
@@ -40,6 +46,7 @@ exports.login = async (req,res,next) => {
      if(!isPasswordCorrect) res.status(500).json({ error: 'Incorrect Password and Email' });
      console.log(req.body);
      const token = jwt.sign({id:user._id},process.env.JWT) 
+     
      
      const { password,  ...otherDetails } = user._doc;
      res.cookie("access_token",token,{

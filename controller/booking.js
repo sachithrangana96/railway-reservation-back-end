@@ -1,10 +1,15 @@
 const Booking = require('../models/booking');
+const User = require('../models/user');
 
 // Create a new booking
 exports.createBooking = async (req, res) => {
   try {
-    const newBooking = await Booking.create(req.body);
-    res.status(201).json(newBooking);
+    const newBooking = await Booking.create({...req.body,user:req.userId});
+    if(newBooking){
+      const loyality = await User.findById(req.userId.id)
+      await User.findByIdAndUpdate(req.userId,{loyality : loyality + 1});
+      res.status(201).json(newBooking);
+    }
   } catch (error) {
     res.status(500).json({ error: error });
   }

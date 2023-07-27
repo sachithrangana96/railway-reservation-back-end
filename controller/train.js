@@ -23,7 +23,10 @@ exports.getAllTrains = async (req, res) => {
   }
 
   try {
-    let trains = await Train.find(query);
+    let trains = await Train.find(query)
+    .populate('startStation')
+    .populate('endStation');
+    
     for (let i = 0; i < trains.length; i++) {
       const { _id } = trains[i];
       const bookings = await booking.find({ train: _id, date });
