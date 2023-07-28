@@ -1,6 +1,7 @@
 const express = require('express');
 const trainController = require('../controller/train');
 
+
 const router = express.Router();
 
 // Train routes

@@ -4,21 +4,19 @@ const User = require('../models/user');
 
 // Create a new user
 exports.createUser = async (req, res) => {
-  console.log(req.body)
+  console.log(req.body, "data")
   try {
     const salt = bcrypt.genSaltSync(10);
     const hash = bcrypt.hashSync(req.body.password,salt);
 
 
     const newUser = new User({
-      first_name:req.body.first_name,
-      last_name:req.body.last_name,
+      full_name:req.body.full_name,
       gender:req.body.gender,
       email:req.body.email,
       mobile:req.body.mobile,
       address:req.body.address,
-      password:hash,
-      status:req.body.status
+      password:hash
      })
 
      const user = await newUser.save()
@@ -30,6 +28,7 @@ exports.createUser = async (req, res) => {
      }).status(200).json(otherDetails);
 
   } catch (error) {
+    console.log(error)
     res.status(500).json({ error: error });
   }
 };

@@ -4,7 +4,7 @@ const morgan = require('morgan');
 const mongoose = require('mongoose');
 const cookieParser = require('cookie-parser');
 const dotenv = require("dotenv");
-
+const {verifyToken} = require('./middlewares/verifyToken')
 
 const userRoutes = require('./routers/user');
 const bookingRoutes = require('./routers/booking');
@@ -12,12 +12,13 @@ const authRoutes = require('./routers/auth');
 const trainRoutes = require('./routers/train');
 const stationRoutes = require('./routers/station');
 const adminRoutes = require('./routers/admin');
+const cookieParser = require('cookie-parser')
 
 const app = express();
-app.use(cookieParser());
 app.use(cors());
 app.use(express.json());
 app.use(morgan('tiny'));
+app.use(cookieParser());
 dotenv.config();
 
 
@@ -56,11 +57,12 @@ app.use('/admin', adminRoutes);
 
 
 
-mongoose.connect('mongodb://localhost:27017/railway')
+mongoose.connect(process.env.MONGO_URI)
 .then(() => console.log('Connected to MongoDB...'))
 .catch( err => console.error('Could not connect to MongoDB...',err))
 
 // Start the server
 app.listen(4000, () => {
   console.log('Server is running on port 3000');
+feature/changes
 });

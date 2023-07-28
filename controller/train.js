@@ -17,6 +17,8 @@ exports.getAllTrains = async (req, res) => {
   const { startStation, endStation, date } = req.query;
   const query = {};
 
+  console.log(req.query)
+
   if (startStation && endStation) {
     query.startStation = startStation;
     query.endStation = endStation;
@@ -31,6 +33,8 @@ exports.getAllTrains = async (req, res) => {
       const { _id } = trains[i];
       const bookings = await booking.find({ train: _id, date });
       const trainObj = JSON.parse(JSON.stringify(trains[i]));
+
+      console.log(bookings)
 
       //booking sit count
       const tot = bookings.reduce((total, booking) => {

@@ -3,6 +3,7 @@ const User = require('../models/user');
 
 // Create a new booking
 exports.createBooking = async (req, res) => {
+  req.body.user = req.userId
   try {
     const newBooking = await Booking.create({...req.body,user:req.userId});
     if(newBooking){
@@ -17,20 +18,24 @@ exports.createBooking = async (req, res) => {
 
 // Read all bookings
 exports.getAllBookings = async (req, res) => {
+  console.log("working")
   try {
-    const bookings = await Booking.find();
+    const bookings = await Booking.find().populate('user').populate('train', 'name startStation endStation') // Populate user fields; // Populate train fields;
+    console.log(bookings)
     res.status(200).json(bookings);
   } catch (error) {
+    console.log(error)
     res.status(500).json({ error: 'Failed to retrieve bookings' });
   }
 };
 
 // Read a single booking by ID
 exports.getBookingById = async (req, res) => {
+
   try {
     const booking = await Booking.findById(req.params.id)
-                  .populate('user', 'first_name last_name email') // Populate user fields
-                  .populate('train', 'name start_station end_station'); // Populate train fields;
+                  .populate('user', 'full_name email') // Populate user fields
+                  .populate('train', 'name startStation endStation'); // Populate train fields;
     if (!booking) {
       res.status(404).json({ error: 'Booking not found' });
     } else {
@@ -81,7 +86,8 @@ exports.getBookingByTrainId = async (req, res) => {
 
 
 exports.getBookingByUserId = async (req, res) => {
-  const userId = req.params.id;
+  
+  const userId = req.userId;
   const {date} = req.query;
  
 
@@ -106,7 +112,7 @@ exports.getBookingByUserId = async (req, res) => {
   try {
     const bookings = await Booking.find({...query})
       .populate('user', 'first_name last_name email')
-      .populate('train', 'name start_station end_station');
+      .populate('train', 'name startStation endStation startTime endTime');
   
     res.status(200).json(bookings);
   } catch (error) {
