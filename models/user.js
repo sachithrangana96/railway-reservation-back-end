@@ -7,7 +7,8 @@ const userSchema = new mongoose.Schema({
   mobile: { type: String, required: true },
   address: { type: String, required: true },
   password: { type: String, required: true },
-  status: { type: String, required: false }
+  status: { type: String, required: false },
+  loyaltyPoints:{type:String, default:0}
 });
 
 module.exports = mongoose.model('User', userSchema);

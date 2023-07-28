@@ -13,10 +13,13 @@ exports.createBooking = async (req, res) => {
 
 // Read all bookings
 exports.getAllBookings = async (req, res) => {
+  console.log("working")
   try {
-    const bookings = await Booking.find();
+    const bookings = await Booking.find().populate('user').populate('train', 'name startStation endStation') // Populate user fields; // Populate train fields;
+    console.log(bookings)
     res.status(200).json(bookings);
   } catch (error) {
+    console.log(error)
     res.status(500).json({ error: 'Failed to retrieve bookings' });
   }
 };
@@ -26,8 +29,8 @@ exports.getBookingById = async (req, res) => {
 
   try {
     const booking = await Booking.findById(req.params.id)
-                  .populate('user', 'first_name last_name email') // Populate user fields
-                  .populate('train', 'name start_station end_station'); // Populate train fields;
+                  .populate('user', 'full_name email') // Populate user fields
+                  .populate('train', 'name startStation endStation'); // Populate train fields;
     if (!booking) {
       res.status(404).json({ error: 'Booking not found' });
     } else {

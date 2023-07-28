@@ -38,13 +38,13 @@ app.use((err,req,res,next)=>{
 app.use('/users', userRoutes);
 
 // Use the booking routes
-app.use('/bookings',verifyToken, bookingRoutes);
+app.use('/bookings', bookingRoutes);
 
 // Use the authentication routes
 app.use('/auth', authRoutes);
 
 // Use the train routes
-app.use('/trains',verifyToken, trainRoutes);
+app.use('/trains', trainRoutes);
 
 // Use the admin routes
 app.use('/admin', adminRoutes);
