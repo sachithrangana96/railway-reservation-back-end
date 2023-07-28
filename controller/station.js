@@ -17,9 +17,17 @@ exports.createStation = async (req,res) =>{
 
 
 exports.getAllStations = async (req,res) =>{
+    console.log(req.cookies)
     try {
         const station = await Station.find();
-        res.status(200).json(station);
+        const data = station.map((x)=>{
+            return{
+                label:x?.name,
+                value:x?._id
+            }
+        })
+
+        res.status(200).send(data)
     } catch (error) {
         res.status(500).json({error:error});
     }

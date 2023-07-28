@@ -35,22 +35,22 @@ exports.createUser = async (req, res) => {
 
 
 exports.login = async (req,res,next) => {
+  console.log(req.body, res.cookies)
 
   try {
 
      const user = await User.findOne({email:req.body.email})
-     if(!user) return res.status(404).json({ error: 'User not found' });
-     
+     console.log(user)
+     if(!user) return res.status(401).json({ error: 'User not found' });
+
      const isPasswordCorrect = await bcrypt.compare(req.body.password,user.password)
-     if(!isPasswordCorrect) res.status(500).json({ error: 'Incorrect Password and Email' });
+     if(!isPasswordCorrect) res.status(401).json({ error: 'Incorrect Password and Email' });
      console.log(req.body);
      const token = jwt.sign({id:user._id},process.env.JWT) 
      
-     
+     console.log(token)
      const { password,  ...otherDetails } = user._doc;
-     res.cookie("access_token",token,{
-      httpOnly:true,
-     }).status(200).json({...otherDetails});
+     res.cookie("access_token",token,{}).status(200).json({...otherDetails});
 
   } catch (err) {
     res.status(500).json({ error: 'Failed to retrieve users' });

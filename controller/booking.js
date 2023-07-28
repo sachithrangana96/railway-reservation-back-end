@@ -110,9 +110,22 @@ exports.getBookingByUserId = async (req, res) => {
 
 
   try {
-    const bookings = await Booking.find({...query})
-      .populate('user', 'first_name last_name email')
-      .populate('train', 'name startStation endStation startTime endTime');
+    const bookings = await Booking.find({ ...query })
+  .populate('user', 'first_name last_name email')
+  .populate({
+    path: 'train',
+    select: 'name startTime endTime', // Include startTime and endTime directly
+    populate: [
+      {
+        path: 'startStation',
+        select: 'name', // Assuming you want to populate only the name field of the startStation
+      },
+      {
+        path: 'endStation',
+        select: 'name', // Assuming you want to populate only the name field of the endStation
+      },
+    ],
+  });
   
     res.status(200).json(bookings);
   } catch (error) {

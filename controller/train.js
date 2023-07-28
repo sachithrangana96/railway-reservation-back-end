@@ -52,9 +52,10 @@ exports.getAllTrains = async (req, res) => {
 
       console.log("bookings", bookings[i]);
     }
-
+    console.log(trains)
     res.status(200).json(trains);
   } catch (error) {
+    console.log(error)
     res.status(500).json({ error: "Failed to retrieve trains" });
   }
 };

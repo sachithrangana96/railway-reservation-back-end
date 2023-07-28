@@ -2,7 +2,6 @@ const express = require('express');
 const cors = require("cors");
 const morgan = require('morgan');
 const mongoose = require('mongoose');
-const cookieParser = require('cookie-parser');
 const dotenv = require("dotenv");
 const {verifyToken} = require('./middlewares/verifyToken')
 
@@ -15,7 +14,10 @@ const adminRoutes = require('./routers/admin');
 const cookieParser = require('cookie-parser')
 
 const app = express();
-app.use(cors());
+app.use(cors({
+  origin: ['http://localhost:3000'],
+  credentials: true
+}));
 app.use(express.json());
 app.use(morgan('tiny'));
 app.use(cookieParser());
@@ -63,6 +65,5 @@ mongoose.connect(process.env.MONGO_URI)
 
 // Start the server
 app.listen(4000, () => {
-  console.log('Server is running on port 3000');
-feature/changes
+  console.log('Server is running on port 4000');
 });
