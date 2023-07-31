@@ -8,7 +8,7 @@ const router = express.Router();
 router.get('/', userController.getAllUsers);
 router.get('/me',verifyToken, userController.getUserByMe);
 router.get('/:id', userController.getUserById);
-
+router.patch('/update',verifyToken, userController.updateMe)
 router.put('/:id', userController.updateUserById);
 router.delete('/:id', userController.deleteUserById);
 

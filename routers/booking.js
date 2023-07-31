@@ -20,7 +20,6 @@ router.put('/:id', bookingController.updateBookingById);
 router.get('/:id', bookingController.getBookingById);
 router.delete('/:id', bookingController.deleteBookingById);
 
-
 // filters
 router.get('/train/:id', bookingController.getBookingByTrainId);
 router.get('/user/userID',verifyToken, bookingController.getBookingByUserId);

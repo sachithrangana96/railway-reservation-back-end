@@ -7,11 +7,13 @@ exports.createBooking = async (req, res) => {
   try {
     const newBooking = await Booking.create({...req.body,user:req.userId});
     if(newBooking){
-      const loyality = await User.findById(req.userId.id)
-      await User.findByIdAndUpdate(req.userId,{loyality : loyality + 1});
+      const user = await User.findById(req.userId)
+      console.log(user)
+      await User.findByIdAndUpdate(req.userId,{loyality : user.loyality + 1});
       res.status(201).json(newBooking);
     }
   } catch (error) {
+    console.log(error)
     res.status(500).json({ error: error });
   }
 };
@@ -96,6 +98,8 @@ exports.getBookingByUserId = async (req, res) => {
     query.user = userId;
   }
 
+console.log(userId, "user ID")
+
   if (date) {
     const startDate = new Date(date);
     const endDate = new Date(startDate.getTime() + 24 * 60 * 60 * 1000);
@@ -126,6 +130,8 @@ exports.getBookingByUserId = async (req, res) => {
       },
     ],
   });
+
+    console.log(bookings)
   
     res.status(200).json(bookings);
   } catch (error) {

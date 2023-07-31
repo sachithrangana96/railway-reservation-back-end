@@ -68,6 +68,18 @@ exports.getAllUsers = async (req, res) => {
   }
 };
 
+exports.updateMe = async (req,res)=>{
+  try{
+
+    const id = req.userId
+    const user = await User.findByIdAndUpdate(id, req.body, {new:true})
+    res.status(200).send(user)
+
+  }catch(e){
+    res.status(500).json({ error: 'Failed to update users' });
+  }
+}
+
 // Read a single user by ID
 exports.getUserById = async (req, res) => {
   
@@ -85,11 +97,12 @@ exports.getUserById = async (req, res) => {
 
 
 exports.getUserByMe = async (req, res) => {
-
+	console.log(req.userId)
    try {
      const user = await User.findById(req.userId);
+	console.log(user)
      if (!user) {
-       res.status(404).json({ error: 'User not found' });
+       res.status(401).json({ error: 'User not found' });
      } else {
        res.status(200).json(user);
      }
