@@ -70,7 +70,6 @@ exports.getAllUsers = async (req, res) => {
 
 exports.updateMe = async (req,res)=>{
   try{
-
     const id = req.userId
     const user = await User.findByIdAndUpdate(id, req.body, {new:true})
     res.status(200).send(user)

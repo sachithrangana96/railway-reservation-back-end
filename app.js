@@ -11,6 +11,7 @@ const authRoutes = require('./routers/auth');
 const trainRoutes = require('./routers/train');
 const stationRoutes = require('./routers/station');
 const adminRoutes = require('./routers/admin');
+const couponRoutes = require('./routers/coupon')
 const cookieParser = require('cookie-parser')
 
 const app = express();
@@ -56,6 +57,8 @@ app.use('/station',stationRoutes);
 
 // Use the admin routes
 app.use('/admin', adminRoutes);
+
+app.use('/coupon', couponRoutes);
 
 
 
